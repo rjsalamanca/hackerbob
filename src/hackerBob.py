@@ -28,8 +28,9 @@ def crack_password(password,rot):
 
     if(len(cipher) < len(saved_password)):
         decoded += '*' * (len(saved_password)-len(cipher))
+        print('HINT: The password is longer')
     else:
-        print('Try using a shorter password')
+        print('HINT: Try using a shorter password')
 
     return 'Secret password is: %s ' % decoded
 
