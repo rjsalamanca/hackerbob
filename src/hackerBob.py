@@ -8,7 +8,7 @@ def crack_password(password,rot):
     decoded = ''
 
     for letter in cipher:
-        if letter.isalpha():
+        if letter.isalpha() and count < len(saved_password):
             get_index_of_letter = alphabet.index(letter)
             if get_index_of_letter < rot-1:
                 if(alphabet[get_index_of_letter+rot] == saved_password[count]):
@@ -25,6 +25,12 @@ def crack_password(password,rot):
         else:
             decoded += '*'
         count += 1
+
+    if(len(cipher) < len(saved_password)):
+        decoded += '*' * (len(saved_password)-len(cipher))
+    else:
+        print('Try using a shorter password')
+
     return 'Secret password is: %s ' % decoded
 
 print(crack_password(guess_password,13))
