@@ -13,13 +13,13 @@ def crack_password(password,rot):
             if get_index_of_letter < rot-1:
                 if(alphabet[get_index_of_letter+rot] == saved_password[count]):
                     print('Characters Matched: %s at index %d' % (letter,count+1))
-                    decoded += alphabet[get_index_of_letter+13]
+                    decoded += alphabet[get_index_of_letter+rot]
                 else:
                     decoded += '*'
             else:
                 if(alphabet[get_index_of_letter+rot-26] == saved_password[count]):
                     print('Characters Matched: %s at index %s' % (letter,count+1))
-                    decoded += alphabet[get_index_of_letter+13-26]
+                    decoded += alphabet[get_index_of_letter+rot-26]
                 else:
                     decoded += '*'
         else:
