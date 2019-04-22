@@ -1,16 +1,25 @@
-thePassword = str(1234)
+guess_password = input('Guess the password: ')
+saved_password = 'nop'
 
-def crack_password(password):
-    passwd = list(thePassword)
-    for i in range(0, 10):
-        for j in range(0,10):
-            for k in range(0,10):
-                for l in range(0,10):
-                    if str(i) == passwd[0] and str(j) == passwd[1] and str(k) == passwd[2] and str(l) == passwd[3]:
-                        mylist=[str(i),str(j),str(k),str(l)]
-                        code = "".join(mylist)
-                        #print mylist
-                        #print code
-    print("Four Digit Password: {}".format(code))
+def crack_password(password,rot):
+    cipher = password
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    count = 0
+    
+    for letter in cipher:
+        if letter.isalpha():
+            get_index_of_letter = alphabet.index(letter)
+            if get_index_of_letter < rot-1:
+                if(alphabet[get_index_of_letter+rot] != saved_password[count]):
+                    return False
+            else:
+                if(alphabet[get_index_of_letter+rot-26] != saved_password[count]):
+                    return False
+        count += 1
+    return True
 
-crack_password(1234)
+print(crack_password(guess_password,13))
+
+# input str
+# convert str to rot 13
+# compare encoded and saved pwd
