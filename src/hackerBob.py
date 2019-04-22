@@ -15,14 +15,17 @@ def crack_password(password,rot):
                     print('Characters Matched: %s at index %d' % (letter,count+1))
                     decoded += alphabet[get_index_of_letter+rot]
                 else:
+                    print('Character Failed: %s at index %d' % (letter, count+1))
                     decoded += '*'
             else:
                 if alphabet[get_index_of_letter+rot-26] == saved_password[count]:
                     print('Characters Matched: %s at index %s' % (letter,count+1))
                     decoded += alphabet[get_index_of_letter+rot-26]
                 else:
+                    print('Character Failed: %s at index %d' % (letter, count+1))
                     decoded += '*'
         else:
+            # add stars if password is too long
             decoded += '*'
         count += 1
 
