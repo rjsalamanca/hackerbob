@@ -35,6 +35,9 @@ def crack_password(password,rot):
     elif len(cipher) > len(saved_password):
         print('HINT: Try using a shorter password')
 
-    return 'Secret password is: %s ' % decoded
+    if(decoded == saved_password):
+        return '1337 H4X0R'
+    else:
+        return 'Secret so far is: %s ' % decoded
 
 print(crack_password(guess_password,13))
